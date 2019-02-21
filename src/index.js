@@ -7,32 +7,37 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-// Function Declaration
-// Hoisted
-// function sayHi () {
-//   return console.log('hi');
+// const arr = ['hi', 'Andrey', 'new item', 'second item']
+// const [a, b, ...c] = arr
+// console.log(a)
+// console.log(b)
+// console.log(c)
+
+// const person = {
+//   name: "Andrey",
+//   age: 30,
+//   job: "Web Dev"
 // }
 
-// Function Expression
-// Anonymous, not named
-// Not hoisting
-// Passed around or used
-// const sayHi = function () {
-//   return console.log('hi')
+// const makePerson = (name, age, job) => {
+//   return {
+//     name: name,
+//     age: age,
+//     job: job
+//   }
 // }
 
-// const sayHi = function sayHi () {
-//   return console.log('hi')
-// }
+const makePerson = (name, age, job) => {
+  return {
+    name,
+    age,
+    job
+  }
+}
 
-// const sayHi = () => {
-//   return console.log('hi')
-// }
+const dev = makePerson('Andrey', 30, 'webDev')
+// const name = dev.name
 
-// const sayHi = () => (
-//   console.log('hi')
-// )
+const { name, ...rest } = dev
 
-const sayHi = () => console.log('hi')
-
-sayHi()
+console.log(rest)
