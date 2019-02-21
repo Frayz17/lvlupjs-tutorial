@@ -105,42 +105,29 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"src/index.js":[function(require,module,exports) {
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+document.getElementById("app").innerHTML = "\n<h1>Hello Parcel!</h1>\n<div>\n  Look\n  <a href=\"https://parceljs.org\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>\n  for more info about Parcel.\n</div>\n";
 
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-document.getElementById("app").innerHTML = "\n<h1>Hello Parcel!</h1>\n<div>\n  Look\n  <a href=\"https://parceljs.org\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>\n  for more info about Parcel.\n</div>\n"; // const arr = ['hi', 'Andrey', 'new item', 'second item']
-// const [a, b, ...c] = arr
-// console.log(a)
-// console.log(b)
-// console.log(c)
-// const person = {
-//   name: "Andrey",
-//   age: 30,
-//   job: "Web Dev"
-// }
-// const makePerson = (name, age, job) => {
-//   return {
-//     name: name,
-//     age: age,
-//     job: job
-//   }
-// }
-
-var makePerson = function makePerson(name, age, job) {
+var makePerson = function makePerson(_ref) {
+  var name = _ref.name,
+      lastName = _ref.lastName,
+      age = _ref.age,
+      job = _ref.job;
   return {
     name: name,
+    lastName: lastName,
     age: age,
     job: job
   };
-};
+}; // const dev = makePerson('Andrey', 'Dmitriev', 30, 'Web Dev')
 
-var dev = makePerson('Andrey', 30, 'webDev'); // const name = dev.name
 
-var name = dev.name,
-    rest = _objectWithoutProperties(dev, ["name"]);
-
-console.log(rest);
+var dev = makePerson({
+  name: "Scott",
+  lastName: "Tolinski",
+  age: 32,
+  job: "Web Dev"
+});
+console.log(dev);
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -168,7 +155,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39253" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40083" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

@@ -7,37 +7,21 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-// const arr = ['hi', 'Andrey', 'new item', 'second item']
-// const [a, b, ...c] = arr
-// console.log(a)
-// console.log(b)
-// console.log(c)
-
-// const person = {
-//   name: "Andrey",
-//   age: 30,
-//   job: "Web Dev"
-// }
-
-// const makePerson = (name, age, job) => {
-//   return {
-//     name: name,
-//     age: age,
-//     job: job
-//   }
-// }
-
-const makePerson = (name, age, job) => {
+const makePerson = ({ name, lastName, age, job }) => {
   return {
     name,
+    lastName,
     age,
-    job
+    job  
   }
 }
 
-const dev = makePerson('Andrey', 30, 'webDev')
-// const name = dev.name
+// const dev = makePerson('Andrey', 'Dmitriev', 30, 'Web Dev')
+const dev = makePerson({
+  name: "Scott",
+  lastName: "Tolinski",
+  age: 32,
+  job: "Web Dev"
+})
 
-const { name, ...rest } = dev
-
-console.log(rest)
+console.log(dev)
