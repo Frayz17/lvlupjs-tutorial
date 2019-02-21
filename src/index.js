@@ -7,21 +7,45 @@ document.getElementById("app").innerHTML = `
 </div>
 `;
 
-const makePerson = ({ name, lastName, age, job }) => {
+// Consistency Is King
+// Clear, searchable & obvios
+
+const makePerson = ({ firstName, lastName, age, job }) => {
   return {
-    name,
+    name: firstName + ' ' + lastName,
     lastName,
     age,
-    job  
+    job,
+    salary: 16000 * 4
   }
 }
 
 // const dev = makePerson('Andrey', 'Dmitriev', 30, 'Web Dev')
 const dev = makePerson({
-  name: "Scott",
+  firstName: "Scott",
   lastName: "Tolinski",
   age: 32,
   job: "Web Dev"
 })
+
+// DO NOT DO
+// const hireDev = ({ devInfo }) => {
+//   const hiredDevInfo = {
+//     hired: true,
+//     ...devInfo
+//   }
+//   return hiredDevInfo
+// }
+
+// Correct
+const hireDev = ({ dev }) => {
+  const hiredDev = {
+    hired: true,
+    ...dev
+  }
+  return hiredDev
+}
+
+console.log(hireDev({ dev }))
 
 console.log(dev)

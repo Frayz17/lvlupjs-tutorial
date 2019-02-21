@@ -105,28 +105,56 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"src/index.js":[function(require,module,exports) {
-document.getElementById("app").innerHTML = "\n<h1>Hello Parcel!</h1>\n<div>\n  Look\n  <a href=\"https://parceljs.org\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>\n  for more info about Parcel.\n</div>\n";
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+document.getElementById("app").innerHTML = "\n<h1>Hello Parcel!</h1>\n<div>\n  Look\n  <a href=\"https://parceljs.org\" target=\"_blank\" rel=\"noopener noreferrer\">here</a>\n  for more info about Parcel.\n</div>\n"; // Consistency Is King
+// Clear, searchable & obvios
 
 var makePerson = function makePerson(_ref) {
-  var name = _ref.name,
+  var firstName = _ref.firstName,
       lastName = _ref.lastName,
       age = _ref.age,
       job = _ref.job;
   return {
-    name: name,
+    name: firstName + ' ' + lastName,
     lastName: lastName,
     age: age,
-    job: job
+    job: job,
+    salary: 16000 * 4
   };
 }; // const dev = makePerson('Andrey', 'Dmitriev', 30, 'Web Dev')
 
 
 var dev = makePerson({
-  name: "Scott",
+  firstName: "Scott",
   lastName: "Tolinski",
   age: 32,
   job: "Web Dev"
-});
+}); // DO NOT DO
+// const hireDev = ({ devInfo }) => {
+//   const hiredDevInfo = {
+//     hired: true,
+//     ...devInfo
+//   }
+//   return hiredDevInfo
+// }
+// Correct
+
+var hireDev = function hireDev(_ref2) {
+  var dev = _ref2.dev;
+
+  var hiredDev = _objectSpread({
+    hired: true
+  }, dev);
+
+  return hiredDev;
+};
+
+console.log(hireDev({
+  dev: dev
+}));
 console.log(dev);
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -155,7 +183,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40083" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38515" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
